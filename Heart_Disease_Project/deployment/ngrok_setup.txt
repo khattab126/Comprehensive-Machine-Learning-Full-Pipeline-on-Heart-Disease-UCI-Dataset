@@ -1,0 +1,29 @@
+Ngrok Deployment Setup Instructions
+=====================================
+
+1. Install Ngrok:
+   - Visit https://ngrok.com/
+   - Sign up for a free account
+   - Download ngrok for your operating system
+   - Extract and add to your PATH
+
+2. Get your authtoken:
+   - Login to ngrok dashboard
+   - Go to "Your Authtoken" section
+   - Copy your authtoken
+
+3. Configure ngrok:
+   ngrok config add-authtoken YOUR_AUTHTOKEN_HERE
+
+4. Run the Streamlit app:
+   streamlit run ui/app.py
+
+5. In another terminal, expose the app:
+   ngrok http 8501
+
+6. Access your app:
+   - Copy the public URL from ngrok output
+   - Share the URL with others for live access
+
+Note: Free ngrok accounts have limitations on concurrent connections and session duration.
+For production use, consider upgrading to a paid plan.
