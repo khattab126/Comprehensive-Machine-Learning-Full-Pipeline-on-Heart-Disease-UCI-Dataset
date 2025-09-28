@@ -108,7 +108,7 @@ Heart_Disease_Project/
 
 1. **Clone the repository:**
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/khattab126/Comprehensive-Machine-Learning-Full-Pipeline-on-Heart-Disease-UCI-Dataset.git
    cd Heart_Disease_Project
    ```
 
