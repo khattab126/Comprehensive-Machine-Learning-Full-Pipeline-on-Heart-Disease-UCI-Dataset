@@ -9,6 +9,9 @@ import subprocess
 import time
 from pathlib import Path
 
+# Use non-interactive backend for matplotlib in subprocesses
+os.environ['MPLBACKEND'] = 'Agg'
+
 def run_script(script_path, description):
     """Run a Python script and handle errors"""
     print(f"\n{'='*60}")
@@ -17,8 +20,10 @@ def run_script(script_path, description):
     
     try:
         start_time = time.time()
-        result = subprocess.run([sys.executable, script_path], 
-                              capture_output=True, text=True, cwd=os.getcwd())
+        script_abs = Path(script_path).resolve()
+        script_dir = str(script_abs.parent)
+        result = subprocess.run([sys.executable, str(script_abs)], 
+                              capture_output=True, text=True, cwd=script_dir)
         end_time = time.time()
         
         if result.returncode == 0:

@@ -8,6 +8,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 from sklearn.feature_selection import RFE, chi2, SelectKBest
+from sklearn.preprocessing import MinMaxScaler
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
@@ -124,8 +125,10 @@ def chi_square_test(X, y, feature_cols):
     print("CHI-SQUARE TEST FOR FEATURE SELECTION")
     print("="*50)
     
-    # Chi-square test
-    chi2_scores, p_values = chi2(X, y)
+    # Chi-square test requires non-negative values, so scale to [0, 1]
+    scaler = MinMaxScaler()
+    X_nonneg = scaler.fit_transform(X)
+    chi2_scores, p_values = chi2(X_nonneg, y)
     
     # Create results dataframe
     chi2_results = pd.DataFrame({
@@ -168,9 +171,11 @@ def select_k_best_features(X, y, feature_cols, k=8):
     print(f"SELECT K BEST FEATURES (K={k})")
     print("="*50)
     
-    # Select K best features using chi-square
+    # Select K best features using chi-square (requires non-negative values)
+    scaler = MinMaxScaler()
+    X_nonneg = scaler.fit_transform(X)
     selector = SelectKBest(score_func=chi2, k=k)
-    X_selected = selector.fit_transform(X, y)
+    X_selected = selector.fit_transform(X_nonneg, y)
     
     # Get selected feature names
     selected_features = [feature_cols[i] for i in range(len(feature_cols)) if selector.get_support()[i]]

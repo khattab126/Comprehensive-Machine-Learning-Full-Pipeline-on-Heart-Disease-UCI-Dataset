@@ -292,7 +292,7 @@ def compare_clustering_methods(kmeans_results, hierarchical_results, y_true):
     silhouettes = [kmeans_results[2]]  # silhouette score
     
     # Add hierarchical methods
-    for method, results in hierarchical_results[0].items():
+    for method, results in hierarchical_results.items():
         methods.append(f'Hierarchical-{method}')
         silhouettes.append(results['silhouette'])
     
@@ -342,7 +342,7 @@ def save_clustering_results(kmeans_model, hierarchical_results, best_method, opt
     print("K-Means model saved to: models/kmeans_model.pkl")
     
     # Save best hierarchical model
-    best_hierarchical = hierarchical_results[0][best_method]['model']
+    best_hierarchical = hierarchical_results[best_method]['model']
     joblib.dump(best_hierarchical, '../models/hierarchical_model.pkl')
     print("Best hierarchical model saved to: models/hierarchical_model.pkl")
     
@@ -382,7 +382,7 @@ def main():
     kmeans_summary = visualize_clusters(X_scaled, kmeans_labels, y_true, "K-Means", feature_cols)
     
     print(f"\nVisualizing Hierarchical-{best_hierarchical_method} clusters...")
-    hierarchical_labels = hierarchical_results[0][best_hierarchical_method]['labels']
+    hierarchical_labels = hierarchical_results[best_hierarchical_method]['labels']
     hierarchical_summary = visualize_clusters(X_scaled, hierarchical_labels, y_true, 
                                             f"Hierarchical-{best_hierarchical_method}", feature_cols)
     

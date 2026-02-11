@@ -1,0 +1,6 @@
+Method,Silhouette Score
+K-Means,0.23970204935179024
+Hierarchical-ward,0.21004359796492048
+Hierarchical-complete,0.12524926766966535
+Hierarchical-average,0.11607100761892196
+Hierarchical-single,0.07681130956849189

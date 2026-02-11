@@ -27,7 +27,7 @@ def load_and_combine_datasets():
     
     # Cleveland dataset
     try:
-        cleveland = pd.read_csv('../processed.cleveland.data', names=column_names, na_values='?')
+        cleveland = pd.read_csv('processed.cleveland.data', names=column_names, na_values='?')
         cleveland['dataset'] = 'cleveland'
         datasets.append(cleveland)
         print(f"Cleveland dataset loaded: {cleveland.shape}")
@@ -36,7 +36,7 @@ def load_and_combine_datasets():
     
     # Hungarian dataset
     try:
-        hungarian = pd.read_csv('../processed.hungarian.data', names=column_names, na_values='?')
+        hungarian = pd.read_csv('processed.hungarian.data', names=column_names, na_values='?')
         hungarian['dataset'] = 'hungarian'
         datasets.append(hungarian)
         print(f"Hungarian dataset loaded: {hungarian.shape}")
@@ -45,7 +45,7 @@ def load_and_combine_datasets():
     
     # Switzerland dataset
     try:
-        switzerland = pd.read_csv('../processed.switzerland.data', names=column_names, na_values='?')
+        switzerland = pd.read_csv('processed.switzerland.data', names=column_names, na_values='?')
         switzerland['dataset'] = 'switzerland'
         datasets.append(switzerland)
         print(f"Switzerland dataset loaded: {switzerland.shape}")
@@ -54,7 +54,7 @@ def load_and_combine_datasets():
     
     # VA dataset
     try:
-        va = pd.read_csv('../processed.va.data', names=column_names, na_values='?')
+        va = pd.read_csv('processed.va.data', names=column_names, na_values='?')
         va['dataset'] = 'va'
         datasets.append(va)
         print(f"VA dataset loaded: {va.shape}")

@@ -255,7 +255,7 @@ def create_data_visualizations(df):
         # Feature importance (if available)
         try:
             # Try to load feature importance from results
-            feature_importance = pd.read_csv('../results/feature_selection_summary.csv')
+            feature_importance = pd.read_csv('results/feature_selection_summary.csv')
             if 'rf_importance' in feature_importance.columns:
                 fig_importance = px.bar(feature_importance.head(10), 
                                       x='rf_importance', y='feature',
